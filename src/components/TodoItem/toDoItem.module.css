@@ -1,0 +1,99 @@
+.todoItem {
+	margin: 10px auto;
+	padding: 15px;
+	width: 90%;
+	max-width: 500px;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todoItem input[type='text'] {
+	margin: 0;
+	padding: 5px;
+	width: 430px;
+	margin-right: 10px;
+}
+
+.todoItem div {
+	display: flex;
+	padding-right: 10px;
+	align-items: center;
+}
+
+.todoItem span {
+	display: inline-block;
+	margin-right: 10px;
+	width: 440px;
+	overflow-wrap: break-word;
+	text-align: left;
+}
+
+.btnDelete {
+	padding: 2px;
+	font-size: 20px;
+	color: #e32636;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+	}
+	&:active {
+		transform: scale(0.8);
+	}
+}
+
+.btnEdit {
+	margin-right: 5px;
+	padding: 2px;
+	font-size: 20px;
+	color: #2a8d9c;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+	}
+	&:active {
+		transform: scale(0.8);
+	}
+}
+
+.btnSave {
+	margin-right: 5px;
+	padding: 2px;
+	font-size: 20px;
+	color: #47a76a;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+	}
+	&:active {
+		transform: scale(0.8);
+	}
+}
+
+.btnCancel {
+	margin-right: 5px;
+	padding: 2px;
+	font-size: 20px;
+	color: #e32636;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+	}
+	&:active {
+		transform: scale(0.8);
+	}
+}

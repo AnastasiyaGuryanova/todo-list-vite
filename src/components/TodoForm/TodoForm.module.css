@@ -1,0 +1,25 @@
+.form {
+	margin-bottom: 20px;
+}
+
+.input {
+	padding: 10px;
+	margin-right: 5px;
+	width: 340px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.btnForm {
+	padding: 10px 15px;
+	background-color: #47a76a;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.btnForm:hover {
+	opacity: 0.8;
+}

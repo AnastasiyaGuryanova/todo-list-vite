@@ -1,0 +1,12 @@
+.app {
+	margin: 40px auto;
+	text-align: center;
+	font-family: "Arial", sans-serif;
+
+	height: 100vh;
+}
+
+.todoListTitle {
+	margin: 0 0 20px 0;
+	color: #333;
+}
