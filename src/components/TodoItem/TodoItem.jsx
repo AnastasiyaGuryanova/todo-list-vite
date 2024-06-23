@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useRequestDeleteListItem, useRequestUpdateListItem } from "@hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo, updateTodo } from "@actions";
 import styles from "./toDoItem.module.css";
 
 export const TodoItem = ({ todo }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [newTitle, setNewTitle] = useState(todo.title);
-
-	const { updateTodo } = useRequestUpdateListItem();
-
-	const { deleteTodo } = useRequestDeleteListItem();
+	const [newTitle, setNewTitle] = useState(todo.text);
+	const dispatch = useDispatch();
+	const error = useSelector((state) => state.todos.error);
 
 	const handleEdit = () => {
 		setIsEditing(true);
@@ -16,16 +15,21 @@ export const TodoItem = ({ todo }) => {
 
 	const handleCancel = () => {
 		setIsEditing(false);
-		setNewTitle(todo.title);
+		setNewTitle(todo.text);
 	};
 
 	const handleSave = () => {
-		updateTodo(todo.id, newTitle);
+		dispatch(
+			updateTodo({
+				...todo,
+				text: newTitle,
+			}),
+		);
 		setIsEditing(false);
 	};
 
 	const handleDelete = () => {
-		deleteTodo(todo.id);
+		dispatch(deleteTodo(todo.id));
 	};
 
 	const handleChange = ({ target }) => {
@@ -55,13 +59,12 @@ export const TodoItem = ({ todo }) => {
 						type="button"
 						title="Отмена"
 					>
-						{" "}
 						<i className="fa fa-times"></i>
 					</button>
 				</div>
 			) : (
 				<div>
-					<span>{todo.title}</span>
+					<span>{todo.text}</span>
 					<button
 						className={styles.btnEdit}
 						onClick={handleEdit}
@@ -81,6 +84,7 @@ export const TodoItem = ({ todo }) => {
 					</button>
 				</div>
 			)}
+			{error && <p>Ошибка: {error}</p>}
 		</div>
 	);
 };

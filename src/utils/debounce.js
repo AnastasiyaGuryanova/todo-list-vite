@@ -1,4 +1,4 @@
-export function debounce(fn, delay) {
+export const debounce = (fn, delay) => {
 	let timeoutId;
 	return function (...args) {
 		if (timeoutId) {
@@ -8,4 +8,4 @@ export function debounce(fn, delay) {
 			fn(...args);
 		}, delay);
 	};
-}
+};

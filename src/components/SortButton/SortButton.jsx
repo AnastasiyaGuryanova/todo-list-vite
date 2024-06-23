@@ -1,11 +1,14 @@
-import { useUI } from "@contexts";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSortKey } from "@actions";
 import styles from "./SortButton.module.css";
 
 export const SortButton = () => {
-	const { isSorted, setIsSorted } = useUI();
+	const sortKey = useSelector((state) => state.ui.sortKey);
+	const dispatch = useDispatch();
 
 	const sortTodos = () => {
-		setIsSorted(!isSorted);
+		dispatch(setSortKey(sortKey === "text" ? "" : "text"));
 	};
 
 	return (
@@ -13,11 +16,15 @@ export const SortButton = () => {
 			className={
 				styles.btnSort +
 				" " +
-				(isSorted ? styles["sorted"] : styles["sort"])
+				(sortKey === "text" ? styles["sorted"] : styles["sort"])
 			}
 			onClick={sortTodos}
 			type="button"
-			title={isSorted ? "Отменить сортировку" : "Сортировать по алфавиту"}
+			title={
+				sortKey === "text"
+					? "Отменить сортировку"
+					: "Сортировать по алфавиту"
+			}
 		>
 			<i className="fas fa-sort-alpha-down"></i>
 		</button>

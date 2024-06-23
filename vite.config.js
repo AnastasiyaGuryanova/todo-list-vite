@@ -6,10 +6,14 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@components": "/src/components",
-			"@hooks": "/src/hooks",
-			"@utils": "/src/utils",
+			"@api": "/src/api",
+			"@utils": "/src/utils/",
 			"@contexts": "/src/contexts",
-			"@urls": "/src/constants/urls.jsx",
+			"@urls": "/src/constants/urls.js",
+			"@actions": "/src/redux/actions/",
+			"@reducers": "/src/redux/reducers/",
+			"@store": "/src/redux/store.js",
+			"@types": "/src/constants/ActionTypes.js",
 		},
 	},
 });

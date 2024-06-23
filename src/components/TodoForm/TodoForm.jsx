@@ -1,21 +1,26 @@
-import React, { useEffect, useRef } from "react";
-import { useRequestAddListItem } from "@hooks";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "@actions";
 import styles from "./TodoForm.module.css";
 
 export const TodoForm = () => {
-	const inputRef = useRef(null);
-
-	const { addTodo, newTodo, setNewTodo } = useRequestAddListItem();
-
-	useEffect(() => {
-		inputRef.current && inputRef.current.focus();
-	}, []);
+	const [text, setText] = useState("");
+	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!newTodo) return;
-		addTodo(newTodo);
-		setNewTodo("");
+
+		if (text.trim() === "") {
+			return;
+		}
+
+		dispatch(
+			addTodo({
+				text: text.trim(),
+				completed: false,
+			}),
+		);
+		setText("");
 	};
 
 	return (
@@ -23,10 +28,9 @@ export const TodoForm = () => {
 			<input
 				className={styles.input}
 				type="text"
-				value={newTodo}
-				onChange={({ target }) => setNewTodo(target.value)}
+				value={text}
+				onChange={(e) => setText(e.target.value)}
 				placeholder="Добавить новую задачу"
-				ref={inputRef}
 			/>
 			<button className={styles.btnForm} type="submit">
 				Добавить задачу
